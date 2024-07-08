@@ -1,92 +1,50 @@
-// components/Step1.jsx
-import { useDispatch, useSelector } from "react-redux";
+// Step1.jsx
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { chooseBase } from "../../rootSlice";
-import TextField from "@mui/material/TextField";
+import { chooseCategory } from "../../rootSlice";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Radio from "@mui/material/Radio";
 
 const Step1 = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const base = useSelector((state) => state.base);
-  const category = useSelector((state) => state.category);
-  const nameProduct = useSelector((state) => state.nameProduct);
-  const quantity = useSelector((state) => state.quantity);
-  const price = useSelector((state) => state.price);
-  const description = useSelector((state) => state.description);
 
-  const { register, handleSubmit } = useForm({
+  const { handleSubmit, register } = useForm({
     defaultValues: {
-      base,
-      category,
-      nameProduct,
-      quantity,
-      price,
-      description,
+      category: "",
     },
   });
 
   const onSubmit = (data) => {
-    dispatch(chooseBase(data));
+    dispatch(chooseCategory(data.category));
     navigate("/step2");
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <label htmlFor="base">Pick base:</label>
-        <select name="base" id="base" {...register("base")}>
-          <option value="small">Small</option>
-          <option value="medium">Medium</option>
-          <option value="large">Large</option>
-        </select>
-        <TextField
-          id="category"
-          label="Category"
-          variant="outlined"
-          fullWidth
-          margin="normal"
-          required
-          {...register("category", { required: true })}
-        />
-        <TextField
-          id="nameProduct"
-          label="Name Product"
-          variant="outlined"
-          fullWidth
-          margin="normal"
-          {...register("nameProduct", { required: true })}
-        />
-        <TextField
-          id="quantity"
-          label="Quantity"
-          variant="outlined"
-          type="number"
-          fullWidth
-          margin="normal"
-          {...register("quantity", { required: true })}
-        />
-        <TextField
-          id="price"
-          label="Price"
-          variant="outlined"
-          type="number"
-          fullWidth
-          margin="normal"
-          {...register("price", { required: true })}
-        />
-        <TextField
-          id="description"
-          label="Description"
-          variant="outlined"
-          fullWidth
-          margin="normal"
-          multiline
-          rows={4}
-          {...register("description")}
-        />
-      </div>
-      <button>Next</button>
+      <FormControl component="fieldset" margin="normal" fullWidth>
+        <FormLabel component="legend">Category</FormLabel>
+        <RadioGroup
+          aria-labelledby="category-group-label"
+          {...register("category")}
+        >
+          <FormControlLabel
+            value="нова брама"
+            control={<Radio />}
+            label="нова брама"
+          />
+          <FormControlLabel
+            value="заміна брами"
+            control={<Radio />}
+            label="заміна брами"
+          />
+        </RadioGroup>
+      </FormControl>
+      <button type="submit">Next</button>
     </form>
   );
 };

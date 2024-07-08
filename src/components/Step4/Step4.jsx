@@ -21,15 +21,15 @@ const Step4 = () => {
 
   const stockImages = [
     {
-      url: "https://loremflickr.com/cache/resized/5013_5437349522_eee64f0b1c_b_640_480_nofilter.jpg",
+      url: "https://fastly.picsum.photos/id/26/4209/2769.jpg?hmac=vcInmowFvPCyKGtV7Vfh7zWcA_Z0kStrPDW3ppP0iGI",
       alt: "Image 1",
     },
     {
-      url: "https://loremflickr.com/cache/resized/3513_5819625003_4cd033160f_320_240_nofilter.jpg",
+      url: "https://fastly.picsum.photos/id/39/3456/2304.jpg?hmac=cc_VPxzydwTUbGEtpsDeo2NxCkeYQrhTLqw4TFo-dIg",
       alt: "Image 2",
     },
     {
-      url: "https://loremflickr.com/cache/resized/65535_53697933133_80500bb5ca_320_240_g.jpg",
+      url: "https://fastly.picsum.photos/id/101/2621/1747.jpg?hmac=cu15YGotS0gIYdBbR1he5NtBLZAAY6aIY5AbORRAngs",
       alt: "Image 3",
     },
   ];
